@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- root 'books#index'
   devise_for :users
-  resources :post_images, only: [:new, :create, :index, :show, :destroy]
+  root :to =>'homes#top'
+  resources :books, only: [:new, :create, :index, :show, :destroy, :edit]
 end
