@@ -2,6 +2,10 @@
 <p id="notice">
  <%= flash[:notice]  %>
 </p>
+<% if user_signed_in? %>
+<tb>name<%= current_user.name %></tb>
+<tb>introduction<%= current_user.introduction %></tb>
+<% end %>
 <table>
     <thead>
         <tr>
@@ -17,13 +21,16 @@
             <td><%= book.title %></td>
             <td><%= book.body %></td>
             <td><%= link_to "Edit", edit_book_path(book) %>
-                <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %>
+                <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に　消しますか?" %>
             </td>
         </tr>
         <% end %>
     </tbody>
     </table>
 </table>
+<li>
+<%= link_to 'マイページ', user_path(current_user.id) %>
+ </li>
 <h1>New book</h1>
 <% if @book.errors.any? %>
             <div id=“error_explanation”>
