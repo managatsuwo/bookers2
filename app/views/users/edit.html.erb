@@ -1,0 +1,12 @@
+<h1>User info</h1>
+<%= form_with model:@user, local:true do |f| %>
+<h4>Name</h4>
+<%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+<h4>Image</h4>
+<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg"%>
+  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+<h4>Introduction</h4>
+<%= f.text_area :introduction %>
+<%=f.submit 'Updeta User' %>
+<% end %>
+

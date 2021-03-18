@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   @books = @user.books
   @book = Book.new
   end
-  
+
   def create
     @book= Book.new(book_params)
     @book.user_id= current_user.id
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       render :index
    end
   end
-  
+
   def destroy
      @book = Book.find(params[:id])
      if @book.destroy
@@ -26,13 +26,25 @@ class UsersController < ApplicationController
        render :index
      end
   end
-  
+
   def index
-   @book= Users
+    @users= User.all
+    @book = Book.new
+    #@profile_images = @user.profile_images.page(params[:page]).reverse_order
+
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to user_path(@user)
   end
   private
 
-  def book_params
-   params.require(:book).permit(:title,:body)
+  def user_params
+   params.require(:user).permit(:name,:introduction,:profile_image)
   end
 end
