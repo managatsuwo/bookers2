@@ -1,0 +1,18 @@
+
+<h1>User info</h1>
+<% if user_signed_in? %>
+  <tb><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %></tb>
+  <table class="table">
+  <tbody><tr></tr>
+  <tr>
+	  <th>name</th>
+	  <th><%= user.name %></th>
+  </tr>
+  <tr>
+	  <th>introduction</th>
+	  <th><%= user.introduction %></th>
+  </tr>
+</tbody>
+</table>
+<% end %>
+ <tr><%= link_to '編集', edit_user_path(user.id) %></tr>

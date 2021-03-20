@@ -10,18 +10,35 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "Log in", new_user_session_path %>
-      </li>
-      <li>
-        <%= link_to "Sign Up", new_user_registration_path %>
-      </li>
-    <% end %>
+    <header><h4> <%= link_to 'Bookers',root_path %></h4></br>
+            <% if user_signed_in? %>
+          <li>
+             <%= link_to 'Homes', user_path(current_user.id) %>
+          </li>
+           <li>
+             <%= link_to 'Users', users_path %>
+          </li>
+           <li>
+             <%= link_to 'Books', books_path %>
+          </li>
+           <li>
+              <%= link_to 'logout', new_user_session_path %>
+           </li>
+          <% else %>
+            <li>
+              <%= link_to 'Homes', root_path  %>
+            </li>
+            <li>
+              <%= link_to 'About', root_path  %>
+            </li>
+            <li>
+              <%= link_to 'sign up', new_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to 'login', new_user_session_path %>
+           </li>
+          <% end %>
+   </header>
     <%= yield %>
   </body>
 </html>
