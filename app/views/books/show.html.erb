@@ -11,6 +11,7 @@
 <p id="notice">
  <%= flash[:notice]  %>
 </p>
+
 <h1>User info</h1>
 <% if user_signed_in? %>
   <tb><%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg",size:'40x40'%></tb>
@@ -68,7 +69,7 @@
             <td><%= @book.body %></td>
               <% if @book.user.id == current_user.id %>
             <td><%= link_to "Edit", edit_book_path(@book) %>
-                <%= link_to "Destroy", books_path, method: :delete, "data-confirm" => "本当に　消しますか?" %>
+                <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に　消しますか?" %>
             </td>
               <% end %>
         </tr>

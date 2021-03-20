@@ -1,6 +1,4 @@
-<p id="notice">
- <%=  flash[:notice]  %>
-</p>
+
 <% if @book.errors.any? %>
       <h2><%= pluralize(@book.errors.count, "error") %> prohibited this product from being saved:</h2>
   <div id="error_explanation" class="alert alert-danger">

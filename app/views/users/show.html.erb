@@ -8,9 +8,13 @@
  <li>
 <%= link_to 'Books', books_path  %>
  </li>
+ <p id="notice">
+ <%= flash[:notice]  %>
+</p>
+
  <h1>User info</h1>
 <% if user_signed_in? %>
-  <tb><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></tb>
+  <tb><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg",size:'40x40' %></tb>
   <table class="table">
   <tbody><tr></tr>
   <tr>

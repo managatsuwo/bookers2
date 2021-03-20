@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def show
-  @user= User.find(params[:id])
-  @books = @user.books
-  @book = Book.new
+     @user= User.find(params[:id])
+     @books = @user.books
+     @book = Book.new
   end
 
   def create
-    @book= Book.new(book_params)
+      @book= Book.new(book_params)
     @book.user_id= current_user.id
    if @book.save
      redirect_to book_path(@book)
@@ -17,6 +19,16 @@ class UsersController < ApplicationController
    end
   end
 
+
+  def index
+     @users= User.all
+     @book = Book.new
+    #@profile_images = @user.profile_images.page(params[:page]).reverse_order
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
   def destroy
      @book = Book.find(params[:id])
        if @book.destroy
@@ -27,24 +39,13 @@ class UsersController < ApplicationController
        end
   end
 
-  def index
-    @users= User.all
-    @book = Book.new
-    #@profile_images = @user.profile_images.page(params[:page]).reverse_order
-
-  end
-
-  def edit
-    @user = User.find(params[:id])
-  end
   def update
      @user = User.find(params[:id])
      if  @user.update(user_params)
-         redirect_to user_path(@user)
          flash[:notice] ="successfully"
+         redirect_to user_path(@user)
      else
-         redirect_to edit_user_path(@user)
-          flash[:notice] ="error"
+         render :edit
      end
   end
   private

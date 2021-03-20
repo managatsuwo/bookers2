@@ -1,8 +1,36 @@
 <h1>welcome to Bookers !!</h1>
-<h4> Bookers,</h4></br>
+<h4> <%= link_to 'Bookers',root_path %></h4></br>
 <p id="notice">
  <%= flash[:notice]  %>
 </p>
+<% if user_signed_in? %>
+  <li>
+     <%= link_to 'Homes', user_path(current_user.id) %>
+  </li>
+   <li>
+     <%= link_to 'Users', user_path %>
+  </li>
+   <li>
+     <%= link_to 'Books', books_path %>
+  </li>
+   <li>
+      <%= link_to 'logout', new_user_session_path %>
+   </li>
+  <% else %>
+    <li>
+      <%= link_to 'Homes', root_path  %>
+    </li>
+    <li>
+      <%= link_to 'About', root_path  %>
+    </li>
+    <li>
+      <%= link_to 'sign up', new_user_registration_path %>
+    </li>
+    <li>
+      <%= link_to 'login', new_user_session_path %>
+   </li>
+ <% end %>
+
 <h4>you can share and exchange your opinions , inpressions , and emotions</h4></br>
 
 <h4>about various books!</h4></br>
