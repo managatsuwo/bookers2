@@ -28,7 +28,8 @@ class BooksController < ApplicationController
         redirect_to books_path
         flash[:notice] ="successfully"
      else
-       render :index
+        flash[:notice] ="error"
+        render :index
      end
   end
 
@@ -42,7 +43,8 @@ class BooksController < ApplicationController
          redirect_to user_path(current_user.id)
          flash[:notice] ="successfully"
       else
-          render :edit
+          redirect_to edit_book_path(current_user.id)
+          flash[:notice] ="error"
       end
     end
 

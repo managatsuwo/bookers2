@@ -19,12 +19,12 @@ class UsersController < ApplicationController
 
   def destroy
      @book = Book.find(params[:id])
-     if @book.destroy
-        redirect_to books_path
-        flash[:notice] ="successfully"
-     else
-       render :index
-     end
+       if @book.destroy
+          redirect_to books_path
+          flash[:notice] ="successfully"
+       else
+           render :index
+       end
   end
 
   def index
@@ -38,9 +38,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   def update
-    @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user)
+     @user = User.find(params[:id])
+     if  @user.update(user_params)
+         redirect_to user_path(@user)
+         flash[:notice] ="successfully"
+     else
+         redirect_to edit_user_path(@user)
+          flash[:notice] ="error"
+     end
   end
   private
 
