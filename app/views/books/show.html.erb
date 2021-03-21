@@ -1,4 +1,4 @@
-<h2 class="mt-3">New book</h2>
+
     <% if @new_book.errors.any? %>
       <div id=“error_explanation”>
         <h2><%= @new_book.errors.count %>errors prohibited this obj from being saved:</h2>
@@ -42,9 +42,7 @@
                          <td><%= @book.body %></td>
                          <% if @book.user.id == current_user.id %>
                          <td><%= link_to "edit", edit_book_path(@book), class: 'btn btn-sm btn-success' %></td>
-                         <!--<<%= button_to 'ユーザー登録', {controller: 'users', action: 'new'}, {method: :get }%>-->-->-->
-
-                         <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に　消しますか?" %></td>
+                         <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に　消しますか?", class: 'btn btn-sm btn-danger delete' %></td>
                         </td>
                      <% end %>
                     </tr>
