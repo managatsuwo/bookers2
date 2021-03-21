@@ -1,25 +1,40 @@
-<h1>User info</h1>
+
 <%= form_with model:@user, local:true do |f| %>
 <% if @user.errors.any? %>
-            <div id=“error_explanation”>
-              <h2><%= @user.errors.count %>errors prohibited this obj from being saved:</h2>
-              <ul>
-              <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-              </ul>
-            </div>
-          <% end %><p id="notice">
+  <div id=“error_explanation”>
+    <h2><%= @user.errors.count %>errors prohibited this obj from being saved:</h2>
+      <ul>
+       <% @user.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+       <% end %>
+      </ul>
+  </div>
+<% end %>
+<p id="notice">
  <%= flash[:notice]  %>
 </p>
-<h4>Name</h4>
-<%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
-<h4>Image</h4>
-<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg"%>
-  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
-  
-<h4>Introduction</h4>
-<%= f.text_area :introduction %>
-<%=f.submit 'Updeta User' %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <h2>User info</h2>
+        <div class="form-group">
+          </h4>Name</h4>
+          <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+        </div>
+        <div class="form-group">
+          <h4>Image</h4>
+          <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg"%>
+          <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+        </div>
+        <div class="form-group">
+          <h4>Introduction</h4>
+          <%= f.text_area :introduction %>
+        </div>
+        <div class="form-group">
+        <%=f.submit 'Updeta User' %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
 
