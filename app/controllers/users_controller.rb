@@ -28,6 +28,10 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if
+      current_user.id != @user.id
+      redirect_to  user_path(current_user.id)
+    end
   end
   def destroy
      @book = Book.find(params[:id])

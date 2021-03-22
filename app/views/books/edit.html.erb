@@ -23,9 +23,9 @@
          <%= f.text_area :body, class:"form-control" %>
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-success">Update book </button>
+          <%= f.submit "Update Book",class:"btn btn-success" %>
         </div>
-      <%= link_to "show", user_path(current_user.id) %> <tb>|</tb><%= link_to "back", books_path %>
+          <%= link_to "Show", book_path(@book) %>|<%= link_to "Back", books_path %>
       <% end %>
     </div>
   </div>
