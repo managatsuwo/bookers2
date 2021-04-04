@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def index
      @users= User.all
      @new_book = Book.new
-    #@profile_images = @user.profile_images.page(params[:page]).reverse_order
+     
   end
 
   def edit
@@ -51,6 +51,17 @@ class UsersController < ApplicationController
      else
          render :edit
      end
+     
+    def follows
+      user = User.find(params[:id])
+      @users = user.followings
+    end
+  
+    def followers
+      user = User.find(params[:id])
+      @users = user.followers
+    end
+    
   end
   private
 
