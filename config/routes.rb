@@ -7,7 +7,9 @@ Rails.application.routes.draw do
      get 'followings' => 'relationships#followings'
      get 'followers' => 'relationships#followers'
     end
-    
+
+    get 'search' => "searchs#finder"
+
     resources :books do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
